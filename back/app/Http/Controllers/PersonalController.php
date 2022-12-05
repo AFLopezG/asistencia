@@ -38,6 +38,8 @@ class PersonalController extends Controller
     public function store(StorePersonalRequest $request)
     {
         //
+        return(Personal::create($request->all()));
+
     }
 
     /**
@@ -72,6 +74,8 @@ class PersonalController extends Controller
     public function update(UpdatePersonalRequest $request, Personal $personal)
     {
         //
+        $personal->update($request->all());
+
     }
 
     /**
@@ -83,5 +87,6 @@ class PersonalController extends Controller
     public function destroy(Personal $personal)
     {
         //
+        $personal->delete();
     }
 }

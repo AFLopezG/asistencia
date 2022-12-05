@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asistencia;
+use App\Models\Personal;
 use App\Http\Requests\StoreAsistenciaRequest;
 use App\Http\Requests\UpdateAsistenciaRequest;
 
@@ -37,6 +38,19 @@ class AsistenciaController extends Controller
     public function store(StoreAsistenciaRequest $request)
     {
         //
+        $personal=Personal::where('ci',$request->personal['ci'])->get();
+        if(sizeof($personal)==0){
+            $refri=new Personal();
+            $refri->fecha=$request->fecha;
+            $refri->hora=$request->hora;
+            $refri->personal_id=$personal->id;
+            $refri->save();
+            return $refri;
+        }
+        else{
+            return response()->json(['message' => 'Se encuentra registrado'], 500);
+
+        }
     }
 
     /**

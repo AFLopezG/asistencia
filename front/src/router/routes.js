@@ -2,6 +2,7 @@ import indexPage from "pages/IndexPage";
 import Login from "pages/Login";
 import User from "pages/User";
 import Personal from "pages/Personal";
+import Asistencia from "pages/Asistencia";
 
 const routes = [
   {
@@ -11,6 +12,7 @@ const routes = [
       { path: '', component: indexPage ,meta: {requiresAuth: true}},
       { path: 'user', component: User,meta: {requiresAuth: true}},
       { path: 'personal', component: Personal,meta: {requiresAuth: true}},
+      { path: 'asistencia', component: Asistencia,meta: {requiresAuth: true}},
     ]
   },
   {

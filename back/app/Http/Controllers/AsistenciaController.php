@@ -38,17 +38,17 @@ class AsistenciaController extends Controller
     public function store(StoreAsistenciaRequest $request)
     {
         //
-        $personal=Personal::where('ci',$request->personal['ci'])->get();
-        if(sizeof($personal)==0){
-            $refri=new Personal();
-            $refri->fecha=$request->fecha;
-            $refri->hora=$request->hora;
-            $refri->personal_id=$personal->id;
-            $refri->save();
-            return $refri;
+        $personal=Personal::where('ci',$request->ci)->get();
+        if(sizeof($personal)==1){
+            $asistencia=new Asistencia();
+            $asistencia->fecha=$request->fecha;
+            $asistencia->hora=$request->hora;
+            $asistencia->personal_id=$personal[0]->id;
+            $asistencia->save();
+            return $asistencia;
         }
         else{
-            return response()->json(['message' => 'Se encuentra registrado'], 500);
+            return response()->json(['message' => 'No Se encuentra registrado'], 500);
 
         }
     }

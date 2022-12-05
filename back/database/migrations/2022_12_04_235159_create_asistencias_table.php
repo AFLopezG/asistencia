@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->date('fecha');
             $table->time('hora');
-            $table->string('turno')->nullable();
+            //$table->string('turno')->nullable();
             $table->unsignedBigInteger('personal_id');
             $table->foreign('personal_id')->references('id')->on('personals');
             $table->timestamps();
